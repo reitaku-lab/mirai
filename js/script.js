@@ -98,12 +98,21 @@ document.addEventListener('DOMContentLoaded', () => {
         
         // スクロール時に上部タブナビゲーションを表示
         const topNav = document.getElementById('top-nav');
+        const hamburger = document.getElementById('hamburger');
         if (topNav) {
             // 一定以上（今回は100px）スクロールしたらメニューを表示させる
             if (scrolled > 100) {
                 topNav.classList.add('is-scrolled');
             } else {
                 topNav.classList.remove('is-scrolled');
+            }
+        }
+        // ハンバーガーメニューも同じようにスクロール時に表示
+        if (hamburger) {
+            if (scrolled > 100) {
+                hamburger.classList.add('is-scrolled');
+            } else {
+                hamburger.classList.remove('is-scrolled');
             }
         }
         

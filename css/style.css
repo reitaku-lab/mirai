@@ -12,9 +12,10 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    color: var(--accent);
+    color: var(--text-highlight); /* 明るい色をデフォルトに */
     cursor: pointer;
-    background: rgba(0,0,0,0.05);
+    background: rgba(255,255,255,0.06); /* 暗い背景上で視認性を確保 */
+    border: 1px solid rgba(255,255,255,0.12);
     border-radius: 8px;
     transition: background 0.2s, opacity 0.3s, visibility 0.3s;
     opacity: 0;
@@ -45,6 +46,14 @@
 @media (max-width: 768px) {
     .hamburger {
         display: flex;
+        /* モバイルでは常に表示させる（スクロール待ちを無効化） */
+        opacity: 1 !important;
+        visibility: visible !important;
+        pointer-events: auto !important;
+        z-index: 300;
+        background: rgba(255,255,255,0.08); /* 明るめに変更 */
+        border: 1px solid rgba(255,255,255,0.14);
+        color: var(--text-highlight);
     }
     .top-nav {
         top: 0;
@@ -158,8 +167,8 @@ a {
     position: relative;
     height: 100vh;
     background-image: url(../images/Poster_CL.jpg); /* ポスター画像1 */
-    background-size: var(--poster-width) var(--poster-height); /* 上の設定(root)でサイズ変更可能 */
-    background-position: center;
+    background-size: cover; /* 画像を要素にフィットさせ余白を減らす */
+    background-position: center center;
     background-repeat: no-repeat; /* 画像の繰り返しを無効化 */
     display: flex;
     justify-content: center;
@@ -182,9 +191,10 @@ a {
 }
 
 .hero-content {
-    padding: 3rem 6rem;
-    margin-top: 35vh; /* テキスト全体を少しだけ下寄りに配置 */
+    padding: 2rem 3rem;
+    margin-top: 0; /* 中央揃えするため上マージンを削除 */
     z-index: 10;
+    max-width: 1100px;
 }
 
 /* Glitch Effect on Title / ネオンのグロー */
@@ -200,14 +210,14 @@ a {
 }
 
 .glitch {
-    font-size: 87px;
+    font-size: clamp(2.4rem, 7vw, 5.5rem); /* レスポンシブで余白・折返しを抑える */
     margin: 0;
     position: relative;
     color: var(--hero-text-color);
     font-family: 'Noto Sans JP', sans-serif;
-    letter-spacing: 10px;
+    letter-spacing: 0.6rem;
     font-weight: 900;
-    line-height: 1.1; /* 余分な空白を削る */
+    line-height: 1.05;
     text-shadow: var(--hero-glitch-shadow);
     transition: color 0.3s, text-shadow 0.3s;
 }
@@ -796,6 +806,70 @@ footer {
     align-items: center;
     justify-content: center;
     gap: 3rem;
+}
+
+/* ------- Responsive tweaks for small screens ------- */
+@media (max-width: 768px) {
+    .hero {
+        background-position: top center;
+        background-size: cover;
+        height: 88vh; /* 少し大きめにしてテキストを中央寄せしやすくする */
+    }
+
+    .hero-content {
+        padding: 1.25rem;
+        text-align: center;
+        margin-top: 0;
+        transform: translateY(70%); /* テキストをやや下寄せして中央に見せる */
+    }
+
+    .subtitle-top {
+        font-size: 1.2rem;
+        letter-spacing: 2px;
+    }
+
+    .glitch {
+        font-size: clamp(1.8rem, 10vw, 3rem);
+        letter-spacing: 0.2rem;
+    }
+
+    .event-info {
+        display: block;
+        text-align: center;
+        margin-top: 1.25rem;
+        padding-top: 0.75rem;
+        border-top-width: 1px;
+    }
+
+    .event-time-sub {
+        display: block;
+        margin-left: 0;
+        margin-top: 0.25rem;
+    }
+
+    /* スクロール/申し込みボタンをスマホで横幅中央に配置 */
+    .scroll-indicator {
+        right: auto;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .scroll-indicator.is-totop {
+        padding: 10px 0; /* 横パディングをゼロにして幅で制御 */
+        border-radius: 999px;
+        width: calc(100% - 32px); /* 画面左右に余白を残して横長にする */
+        max-width: 420px; /* 大きすぎないよう上限を設定 */
+        box-sizing: border-box;
+    }
+
+    /* main（次セクション）との重なりを避けるため余白を確保 */
+    main {
+        padding-top: 2rem;
+    }
 }
 
 .top-nav ul li a {

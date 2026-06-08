@@ -121,14 +121,14 @@ document.addEventListener('DOMContentLoaded', () => {
         const scrollTextObj = document.getElementById('scroll-text');
         
         if (scrollIndicatorObj && scrollTextObj) {
-            if (scrolled < window.innerHeight * 999) {
-                // 画面の30%以上スクロールした場合、TOPボタンに変化
+            if (scrolled > window.innerHeight * 0.3) {
+                // 画面の30%以上スクロールした場合、申込みボタンに変化
                 scrollIndicatorObj.classList.add('is-totop');
-                scrollTextObj.innerHTML = 'お申し込み'; // 矢印を追加してわかりやすく
+                scrollTextObj.innerHTML = 'お申し込み';
             } else {
                 // 上部に戻ってきたら元のScrollに戻す
                 scrollIndicatorObj.classList.remove('is-totop');
-                scrollTextObj.innerText = 'お申し込み';
+                scrollTextObj.innerText = 'Scroll';
             }
         }
     });

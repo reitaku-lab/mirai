@@ -48,6 +48,9 @@ document.addEventListener('DOMContentLoaded', () => {
             hamburger.classList.toggle('active');
             hamburger.setAttribute('aria-expanded', isActive ? 'true' : 'false');
             topNav.setAttribute('aria-hidden', isActive ? 'false' : 'true');
+
+            // bodyのスクロールを制御
+            document.body.classList.toggle('nav-open', isActive);
         };
 
         hamburger.addEventListener('click', toggleNav);
@@ -61,10 +64,9 @@ document.addEventListener('DOMContentLoaded', () => {
         // ナビリンククリック時に自動で閉じる
         topNav.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
-                topNav.classList.remove('active');
-                hamburger.classList.remove('active');
-                hamburger.setAttribute('aria-expanded', 'false');
-                topNav.setAttribute('aria-hidden', 'true');
+                if (topNav.classList.contains('active')) {
+                    toggleNav();
+                }
             });
         });
     }

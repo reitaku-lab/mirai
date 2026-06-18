@@ -224,7 +224,7 @@ a {
 .hero {
     position: relative;
     height: 100vh;
-    background-image: url(../images/Poster_CL.jpg); /* ポスター画像1 */
+    background-image: url(../images/Poster_CL.png); /* ポスター画像1 */
     background-color: var(--bg-color); /* 背景が足りない場合に下地が見えないように背景色を設定 */
     background-size: cover; /* 画像を要素にフィットさせ余白を減らす */
     background-position: center center;
@@ -317,8 +317,6 @@ a {
     text-shadow: var(--hero-text-shadow);
     line-height: 1.6;
     transition: color 0.3s, text-shadow 0.3s, border-color 0.3s;
-    background: rgba(0,0,0,0.2);
-    border-radius: 8px;
 }
 
 .event-info p {

@@ -133,6 +133,7 @@
     --nav-bg: rgba(11, 12, 16, 0.95);
     --footer-bg: #060608;
     --scroll-btn-bg: rgba(11, 12, 16, 0.8);
+    --event-border: rgba(0, 240, 255, 0.25);
 }
 
 /* グローバルなボックスサイズを設定し、余白・幅計算を安定化させる */
@@ -153,6 +154,7 @@
     --nav-bg: rgba(255, 255, 255, 0.95);
     --footer-bg: #e6ebf0;
     --scroll-btn-bg: rgba(255, 255, 255, 0.9);
+    --event-border: rgba(0, 119, 170, 0.25);
 }
 
 html {
@@ -208,6 +210,38 @@ body.nav-open {
 
 .theme-toggle svg {
     transition: stroke 0.3s;
+}
+
+.language-toggle {
+    position: fixed;
+    top: 20px;
+    right: 78px;
+    z-index: 1000;
+    min-width: 78px;
+    height: 45px;
+    padding: 0 0.85rem;
+    border: 1px solid var(--event-border);
+    border-radius: 999px;
+    background: var(--nav-bg);
+    color: var(--text-highlight);
+    cursor: pointer;
+    font: 700 0.85rem/1 'Montserrat', 'Noto Sans JP', sans-serif;
+    letter-spacing: 0;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+}
+
+.language-toggle:hover {
+    transform: translateY(-1px);
+}
+
+.language-toggle-current {
+    color: var(--accent);
+}
+
+.language-toggle-divider {
+    opacity: 0.55;
+    margin: 0 0.25rem;
 }
 
 /* Typography & Layout */
@@ -1075,6 +1109,13 @@ footer {
 
     .top-nav ul li a {
         font-size: 1.5rem;   /* 見やすく */
+    }
+    .language-toggle {
+        top: 1.2rem;
+        right: 1.2rem;
+        height: 48px;
+        min-width: 74px;
+        z-index: 1100;
     }
     .apply-btn {
         right: 20px;

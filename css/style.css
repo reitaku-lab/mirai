@@ -821,6 +821,20 @@ h2:hover::after {
     margin-bottom: 1.5rem;
 }
 
+.registration-closed {
+    color: #d00000;
+    font-weight: 700;
+    line-height: 1.8;
+}
+
+.registration-closed p {
+    margin: 0 0 1rem;
+}
+
+.registration-closed p:last-child {
+    margin-bottom: 0;
+}
+
 .btn-primary, .btn-secondary {
     display: inline-block;
     padding: 0.8rem 1.5rem;

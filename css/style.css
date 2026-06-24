@@ -47,6 +47,41 @@
     display: inline-flex;
 }
 
+
+.youtube {
+    max-width: 90%;
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+    padding-top: 56.25%; /* 16:9 */
+}
+
+.youtube iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    max-width: none; /* ←これ重要 */
+}
+
+
+.map {
+    width: 100%;
+    max-width: 400px;
+    height: 500px;
+    display: block;
+    margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+    .map {
+        max-width: 1000px;
+        height: 500px;
+    }
+}
+
+
 @media (max-width: 768px) {
     .hamburger {
         display: flex;
@@ -475,25 +510,6 @@ img {
     max-width: 100%;
     height: auto;
 }
-
-/* デフォルト（スマホ） */
-iframe {
-    max-width: 600px;
-    height: 400px;
-    width: 100%;
-}
-
-/* PC用（画面幅が768px以上など） */
-@media (min-width: 768px) {
-    iframe {
-        max-width: 500px;
-        height: 500px;
-    }
-    main {
-        padding: 6rem 2rem;
-    }
-}
-
 h2 {
     font-size: clamp(2rem, 8vw, 3.5rem);
     margin-bottom: 2rem;

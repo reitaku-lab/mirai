@@ -48,21 +48,71 @@
 }
 
 
-.youtube {
-    max-width: 90%;
+.youtube-tabs {
+    max-width: 960px;
     width: 100%;
     margin: 0 auto;
-    position: relative;
-    padding-top: 56.25%; /* 16:9 */
 }
 
-.youtube iframe {
+.youtube-intro {
+    max-width: 960px;
+    margin: 0 auto 1rem;
+    padding: 0.9rem 1rem;
+    border-left: 4px solid var(--accent);
+    background: var(--panel-bg);
+    color: var(--text-main);
+    border-radius: 0 12px 12px 0;
+    line-height: 1.8;
+}
+
+.youtube-tablist {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0.6rem;
+    margin-bottom: 1rem;
+}
+
+.youtube-tab {
+    appearance: none;
+    border: 1px solid var(--event-border);
+    border-radius: 999px;
+    background: var(--panel-bg);
+    color: var(--text-main);
+    font: 700 0.95rem/1 'Montserrat', 'Noto Sans JP', sans-serif;
+    padding: 0.8rem 1rem;
+    cursor: pointer;
+    transition: transform 0.25s ease, background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.youtube-tab:hover {
+    transform: translateY(-1px);
+    border-color: var(--accent);
+    color: var(--text-highlight);
+}
+
+.youtube-tab.is-active {
+    background: var(--accent);
+    color: var(--bg-color);
+    border-color: var(--accent);
+    box-shadow: 0 8px 20px rgba(0, 240, 255, 0.18);
+}
+
+.youtube-player-wrap {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%;
+    border-radius: 16px;
+    overflow: hidden;
+    background: #000;
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.24);
+}
+
+.youtube-player-wrap iframe {
     position: absolute;
-    top: 0;
-    left: 0;
+    inset: 0;
     width: 100%;
     height: 100%;
-    max-width: none; /* ←これ重要 */
+    border: 0;
 }
 
 
@@ -1087,6 +1137,15 @@ footer {
     .registration-methods {
         flex-direction: column;
         gap: 0.9rem;
+    }
+
+    .youtube-tablist {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .youtube-tab {
+        padding: 0.75rem 0.85rem;
+        font-size: 0.9rem;
     }
 
     .event-info {

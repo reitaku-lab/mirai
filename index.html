@@ -92,11 +92,22 @@
         <section id="details" class="details-section">
             <div class="animate-on-scroll fade-up" id="about">
                 <h2 data-i18n="details.heading">イベント内容</h2>
-                    <div class="youtube">
-                        <iframe
-                            src="https://www.youtube.com/embed/videoseries?si=L8uIp2OG4LUqt-VH&amp;list=PL1FK7JmN09Bm5fQiR5HZEybjRMaBJaAx1"
-                            allowfullscreen>
-                        </iframe>
+                    <div class="youtube-tabs" aria-label="YouTube動画の切り替え">
+                        <div class="youtube-tablist" role="tablist" aria-label="YouTube動画タブ">
+                            <button class="youtube-tab is-active" type="button" role="tab" aria-selected="true" aria-controls="youtube-player" data-i18n="video.tab1" data-video-src="https://www.youtube.com/embed/UHBVDPVam-w?si=2zyKu5eWA_Hcf_B7">第1話</button>
+                            <button class="youtube-tab" type="button" role="tab" aria-selected="false" aria-controls="youtube-player" data-i18n="video.tab2" data-video-src="https://www.youtube.com/embed/MDOBl7rDxWw?si=XJ-eln_JtNJNoBCP">第2話</button>
+                            <button class="youtube-tab" type="button" role="tab" aria-selected="false" aria-controls="youtube-player" data-i18n="video.tab3" data-video-src="https://www.youtube.com/embed/4eezcwVNZUM?si=hWWFQj5vHbZKDn0p">第3話</button>
+                            <button class="youtube-tab" type="button" role="tab" aria-selected="false" aria-controls="youtube-player" data-i18n="video.tab4" data-video-src="https://www.youtube.com/embed/e1akM1P01io?si=6qqNYfKqldd-Hfin">第4話</button>
+                        </div>
+                        <div class="youtube-player-wrap">
+                            <iframe
+                                id="youtube-player"
+                                src="https://www.youtube.com/embed/UHBVDPVam-w?si=2zyKu5eWA_Hcf_B7"
+                                title="YouTube動画"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                allowfullscreen>
+                            </iframe>
+                        </div>
                     </div>
 
                 <div class="about-layout">

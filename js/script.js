@@ -24,6 +24,11 @@ document.addEventListener('DOMContentLoaded', () => {
             'details.theme': '「人間らしさ」や「テクノロジー」<br>「地域の未来」',
             'details.model': '高島市をモデルとしながら、',
             'details.question': 'これからの社会について<br>一緒に考えてみませんか？',
+            'video.intro': '高島市の市長と対話ロボットとの特別対談動画を、4本のタブで切り替えてご覧いただけます。',
+            'video.tab1': '第1話',
+            'video.tab2': '第2話',
+            'video.tab3': '第3話',
+            'video.tab4': '第4話',
             'program.heading': 'プログラム',
             'program.talk': '<strong>●石黒浩教授によるトーク</strong><br>　テーマ「いのちの未来」',
             'program.presentation': '<strong>●中高大生プレゼンテーション</strong><br>　テーマ「50年後の地域未来」',
@@ -76,6 +81,11 @@ document.addEventListener('DOMContentLoaded', () => {
             'details.theme': '“Human likeness,” “technology,”<br>and “the future of local communities.”',
             'details.model': 'Using Takashima City as a model,',
             'details.question': 'shall we think together<br>about the society ahead?',
+            'video.intro': 'Watch four special dialogue videos featuring Takashima City’s mayor and a conversational robot, switched by tabs.',
+            'video.tab1': 'Video 1',
+            'video.tab2': 'Video 2',
+            'video.tab3': 'Video 3',
+            'video.tab4': 'Video 4',
             'program.heading': 'Program',
             'program.talk': '<strong>● Talk by Professor Hiroshi Ishiguro</strong><br>Theme: “The Future of Life”',
             'program.presentation': '<strong>● Presentations by junior high, high school, and university students</strong><br>Theme: “The Local Future 50 Years from Now”',
@@ -112,6 +122,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const languageBtn = document.getElementById('language-toggle');
     const scrollText = document.getElementById('scroll-text');
+    const youtubeTabs = document.querySelectorAll('.youtube-tab');
+    const youtubePlayer = document.getElementById('youtube-player');
     let currentLanguage = localStorage.getItem('siteLanguage') || 'ja';
 
     const applyLanguage = (language) => {
@@ -150,6 +162,13 @@ document.addEventListener('DOMContentLoaded', () => {
             const isCta = document.getElementById('scroll-indicator')?.classList.contains('is-totop');
             scrollText.innerText = isCta ? strings['scroll.cta'] : 'Scroll';
         }
+
+        youtubeTabs.forEach((tab) => {
+            const labelKey = tab.dataset.i18n;
+            if (labelKey && strings[labelKey]) {
+                tab.textContent = strings[labelKey];
+            }
+        });
     };
 
     if (languageBtn) {
@@ -159,6 +178,27 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     applyLanguage(currentLanguage);
+
+    if (youtubeTabs.length && youtubePlayer) {
+        const setActiveVideo = (tab) => {
+            youtubeTabs.forEach((button) => {
+                const isActive = button === tab;
+                button.classList.toggle('is-active', isActive);
+                button.setAttribute('aria-selected', isActive ? 'true' : 'false');
+            });
+
+            const nextSrc = tab.dataset.videoSrc;
+            if (nextSrc && youtubePlayer.getAttribute('src') !== nextSrc) {
+                youtubePlayer.setAttribute('src', nextSrc);
+            }
+        };
+
+        youtubeTabs.forEach((tab) => {
+            tab.addEventListener('click', () => setActiveVideo(tab));
+        });
+
+        setActiveVideo(youtubeTabs[0]);
+    }
 
     // --- 白黒テーマ切り替え機能 ---
     const themeBtn = document.getElementById('theme-toggle');

@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="description" content="A continuously unfolding photographic mosaic." />
+    <title>Ishiguro — Photographs</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main id="gallery" aria-label="Ishiguro photo gallery"></main>
+    <div id="stream-sentinel" aria-hidden="true"></div>
+
+    <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Expanded photograph" hidden>
+      <img id="lightbox-image" alt="" />
+    </div>
+
+    <script type="module" src="./gallery.js"></script>
+  </body>
+</html>

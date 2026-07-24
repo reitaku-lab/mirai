@@ -4,9 +4,15 @@ const sentinel = document.querySelector('#stream-sentinel');
 const lightbox = document.querySelector('#lightbox');
 const lightboxImage = document.querySelector('#lightbox-image');
 
+const firstViewPhotoNumbers = new Set([
+  6, 46, 47, 49, 52, 56, 57, 58, 59, 60, 61, 62, 68,
+  70, 74, 76, 77, 84, 87, 89, 90, 92, 94, 95, 98, 100,
+]);
+
 const photos = Array.from({ length: 105 }, (_, index) => ({
   number: index + 1,
   url: `./ishiguro-${index + 1}.jpg`,
+  firstView: firstViewPhotoNumbers.has(index + 1),
 }));
 
 const bandPatterns = [
@@ -70,8 +76,11 @@ function createTile(photo, { eager = false, poster = false } = {}) {
 
 function createHero() {
   const section = document.createElement('section');
-  const heroPhotos = takePhotos(5);
+  const heroPhotos = shuffle(photos.filter((photo) => photo.firstView)).slice(0, 5);
+  const heroPhotoNumbers = new Set(heroPhotos.map((photo) => photo.number));
   const poster = { url: posterUrl, number: 'poster' };
+
+  queue = shuffle(photos.filter((photo) => !heroPhotoNumbers.has(photo.number)));
 
   section.className = 'mosaic mosaic--hero hero-poster-grid';
   section.setAttribute('aria-label', 'Opening photo mosaic');

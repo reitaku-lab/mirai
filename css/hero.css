@@ -208,3 +208,28 @@ html[lang='en'] .hero .subtitle-bottom { white-space: normal; }
 @media (min-width: 769px) {
     .top-nav li:nth-child(4):last-child { grid-column: 4 / 6; }
 }
+
+/* Theme-aware hamburger and close controls, including on the black hero. */
+:root {
+    --menu-control-bg: #10171d;
+    --menu-control-text: #ffffff;
+    --menu-control-border: #344148;
+    --menu-control-hover: #1d2b35;
+}
+:root.light-theme {
+    --menu-control-bg: #ffffff;
+    --menu-control-text: #14232d;
+    --menu-control-border: #bccad3;
+    --menu-control-hover: #edf3f7;
+}
+.hamburger {
+    background: var(--menu-control-bg);
+    color: var(--menu-control-text);
+    border-color: var(--menu-control-border);
+    transition: background-color .2s, color .2s, border-color .2s, opacity .3s, visibility .3s;
+}
+.hamburger:hover { background: var(--menu-control-hover); }
+.hamburger:focus-visible { outline: 3px solid var(--menu-control-text); outline-offset: 3px; }
+@media (prefers-reduced-motion: reduce) {
+    .hamburger { transition: none; }
+}

@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     
 
-    // Start with the dark presentation shown in the design reference.
+    document.documentElement.classList.add("light-theme");
 
     const translations = {
         ja: {
@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
             'archive.editedDescription': '2026年7月20日、高島市民会館で開催された「石黒浩教授とともに考える『私たちの未来』」。<br><br>50年後の未来について考え、語り合った当日のイベントの模様を、全編にわたってお届けします。<br><br>撮影・編集は、学生が手がけました。',
             'archive.fullTitle': 'ドキュメンタリー版',
             'archive.youtube': 'YouTubeで見る',
-            'archive.fullDescription': 'Pen and the Voice<br><br>高島に生きるアート作家が描く、50年後の未来とは——。<br><br>松戸の大学生ラッパーとロボット研究者・石黒浩教授が、アートやテクノロジーを通して、これからの社会と人間のあり方を考えるトークドキュメンタリー。',
+            'archive.fullDescription': 'The Pen and the Voice<br><br>高島に生きるアート作家が描く、50年後の未来とは——。<br><br>松戸の大学生ラッパーとロボット研究者・石黒浩教授が、アートやテクノロジーを通して、これからの社会と人間のあり方を考えるトークドキュメンタリー。',
             'hero.tagline': '50年後の未来は、<span class="text-m">「どこか」</span>ではなく、<span class="text-m">「ここ」</span>から始まる',
             'hero.date': '2026年7月20日（月・祝）開催',
             'hero.venue': '滋賀県・高島市民会館',
@@ -90,7 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
             'archive.editedDescription': 'On July 20, 2026, Takashima Civic Hall hosted Our Future: Thinking with Professor Hiroshi Ishiguro.<br><br>Watch the complete event, where participants explored and discussed the future 50 years from now.<br><br>Filmed and edited by students.',
             'archive.fullTitle': 'Documentary',
             'archive.youtube': 'Watch on YouTube',
-            'archive.fullDescription': 'Pen and the Voice<br><br>What will the future look like in 50 years, as envisioned by an artist living in Takashima?<br><br>A university student rapper from Matsudo and robotics researcher Professor Hiroshi Ishiguro explore the future of society and what it means to be human through art and technology in this conversation documentary.',
+            'archive.fullDescription': 'The Pen and the Voice<br><br>What will the future look like in 50 years, as envisioned by an artist living in Takashima?<br><br>A university student rapper from Matsudo and robotics researcher Professor Hiroshi Ishiguro explore the future of society and what it means to be human through art and technology in this conversation documentary.',
             'hero.tagline': '<span class="text-s">The future 50 years from now begins not </span><span class="text-m">somewhere else</span><span class="text-s">, but </span><span class="text-m">right here</span><span class="text-s">.</span>',
             'hero.date': 'Held on July 20, 2026 (Mon., national holiday)',
             'hero.venue': 'Takashima Civic Hall, Shiga',
@@ -354,6 +354,8 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('resize', syncNavigationAccessibility);
     syncNavigationAccessibility();
 });
+
+
 
 
 

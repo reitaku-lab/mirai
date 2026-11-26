@@ -1,0 +1,210 @@
+/* Reference-led hero. Crop the supplied artwork to its photo area only;
+   the supplied logo is displayed as an image; event information and CTA remain HTML. */
+:root { --bg-color: #030608; --text-main: #e3e7e9; --accent: #0086b3; --event-border: rgba(111,164,187,.25); }
+body { background-image: none; }
+.hero {
+    height: max(100svh, 56.25vw); min-height: 640px; padding: 0;
+    background: #000 !important; display: block; opacity: 1; animation: none;
+    color: #fff; isolation: isolate;
+}
+.hero-art {
+    position: absolute; inset: 0 auto 0 0; width: 53%; z-index: -1;
+    background: url('../images/hero-reference.png') left center / auto 100% no-repeat;
+    mask-image: linear-gradient(to right, #000 87%, transparent 100%);
+}
+.hero-content {
+    position: absolute; left: 53.5%; bottom: 9.8%; width: 41%; max-width: none;
+    padding: 0; margin: 0; transform: none; text-align: center;
+}
+.hero .subtitle-top {
+    font-size: clamp(1.5rem, 2.55vw, 3.5rem); line-height: 1.5;
+    font-weight: 400; letter-spacing: .04em; text-shadow: none; white-space: nowrap;
+}
+.hero .glitch {
+    color: #050505; font-size: clamp(3rem, 6.15vw, 8.5rem); line-height: 1.2;
+    letter-spacing: .07em; font-weight: 900; white-space: nowrap;
+    -webkit-text-stroke: .13em #fff; paint-order: stroke fill; text-shadow: none;
+    margin: .02em 0 .08em;
+}
+.hero .subtitle-bottom {
+    font-family: 'Noto Serif JP', serif; font-weight: 700; letter-spacing: 0;
+    margin: 0; line-height: 1.6; text-shadow: none; white-space: nowrap;
+}
+.hero .subtitle-bottom .text-s { font-size: clamp(.875rem, 1.2vw, 1.65rem); }
+.hero .subtitle-bottom .text-m { font-size: clamp(1rem, 1.55vw, 2rem); }
+.hero .event-info {
+    display: block; width: 100%; max-width: none; border: 0;
+    margin: 2.65vw 0 0; padding: 0 0 0 2.5vw; text-align: left;
+    color: #fff; text-shadow: none; line-height: 1.7;
+}
+.hero .event-info p { font-size: clamp(1rem, 1.45vw, 2rem); letter-spacing: 0; margin: 0 0 .35em; text-align: left; }
+.hero .event-info strong { color: #0086b3; font-weight: 400; }
+.hero .event-time-sub { font-size: .75em; opacity: 1; margin: .5em 0 .35em; }
+.hero .event-venue-sub { display: inline; font-size: .75em; opacity: 1; }
+.hero-video-button {
+    display: flex; align-items: center; justify-content: center;
+    width: 75%; min-height: 3.95vw; margin: 2.8vw auto 0;
+    padding: .08em 1em .15em; border-radius: 999px; background: #f23425;
+    color: #fff; font-size: clamp(1.5rem, 2.8vw, 3.75rem); font-weight: 900;
+    line-height: 1.35; text-decoration: none; transition: background .2s, transform .2s;
+}
+.hero-video-button:hover { background: #d9271b; transform: translateY(-2px); }
+.hero-video-button:focus-visible { outline: 3px solid #fff; outline-offset: 6px; }
+.theme-toggle, .language-toggle { opacity: 0; visibility: hidden; }
+body.has-scrolled .theme-toggle, body.has-scrolled .language-toggle { opacity: 1; visibility: visible; }
+.scroll-indicator { display: none !important; }
+section [id] { scroll-margin-top: 130px; }
+h2::after { box-shadow: none; background: var(--accent); }
+@media (max-width: 1100px) and (min-width: 769px) {
+    .hero-content { left: 51%; width: 47%; }
+    .hero .subtitle-top { font-size: 2.7vw; }
+    .hero .glitch { font-size: 6.5vw; }
+    .hero .event-info { padding-left: 1vw; }
+    .hero .event-venue-sub { display: block; }
+}
+@media (max-width: 768px) {
+    .hero { height: auto; min-height: 100svh; padding: 0 0 2.5rem; }
+    .hero-art {
+        position: relative; inset: auto; width: 100%; height: clamp(360px, 105vw, 650px);
+        background-size: auto 112%; background-position: left top;
+        mask-image: linear-gradient(to bottom, #000 72%, transparent 100%);
+    }
+    .hero-content { position: relative; inset: auto; width: 100%; padding: 0 1.25rem; margin: -1.5rem 0 0; transform: none; }
+    .hero .subtitle-top { font-size: clamp(1rem, 4.3vw, 1.8rem); letter-spacing: .04em; }
+    .hero .glitch { font-size: clamp(2rem, 10.5vw, 4.8rem); letter-spacing: .07em; margin: .15em 0; }
+    .hero .subtitle-bottom { white-space: normal; line-height: 1.8; }
+    .hero .subtitle-bottom .text-s { font-size: .875rem; }
+    .hero .subtitle-bottom .text-m { font-size: 1rem; }
+    .hero .event-info { margin: 1.7rem 0 0; padding: 0; }
+    .hero .event-info p { font-size: 1rem; line-height: 1.8; margin-bottom: .5rem; }
+    .hero .event-time-sub, .hero .event-venue-sub { font-size: .875rem; }
+    .hero .event-venue-sub { display: block; }
+    .hero-video-button { width: 100%; min-height: 58px; margin-top: 1.5rem; font-size: 1.8rem; }
+    .language-toggle { opacity: 1; visibility: visible; }
+    .theme-toggle { top: 4.9rem; right: 1.2rem; }
+    .top-nav.is-scrolled:not(.active) { transform: translateY(-100%); }
+}
+html[lang='en'] .hero .subtitle-top { white-space: normal; font-size: clamp(1.2rem, 2vw, 2.5rem); }
+html[lang='en'] .hero .glitch { letter-spacing: .02em; }
+html[lang='en'] .hero .subtitle-bottom { white-space: normal; }
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+    .animate-on-scroll { opacity: 1; transform: none; }
+}
+@media (max-width: 768px) {
+    .hero-art { background-image: linear-gradient(to right, transparent 76%, #000 89%), url('../images/hero-reference.png'); }
+}
+
+/* Compact composition and the supplied title artwork (with its original margins clipped by CSS). */
+.hero { height: 100svh; min-height: 600px; }
+.hero-art {
+    top: 5%; left: clamp(64px, 9vw, 180px); bottom: auto; height: 90%; width: min(50%, 81svh);
+}
+.hero-content {
+    left: 54%; top: 50%; bottom: auto; width: 38%; max-width: 680px;
+    transform: translateY(-35%);
+}
+.hero-logo {
+    position: relative; width: 100%; aspect-ratio: 4732 / 1406;
+    margin: 0; overflow: hidden; line-height: 0;
+}
+.hero-logo img {
+    position: absolute; width: 121.724%; max-width: none; height: auto;
+    left: -10.334%; top: -64.580%;
+}
+.hero .event-info { margin-top: clamp(24px, 2.3vw, 40px); padding-left: 1rem; }
+.hero .event-info p { font-size: clamp(1rem, 1.15vw, 1.375rem); }
+.hero .event-time-sub, .hero .event-venue-sub { font-size: max(.875rem, .76em); }
+.hero-video-button {
+    width: 76%; min-height: 54px; margin-top: clamp(24px, 2vw, 36px);
+    font-size: clamp(1.5rem, 2vw, 2.25rem); padding: .2em 1em .3em;
+}
+@media (min-width: 769px) and (max-width: 1100px) {
+    .hero-content { left: 52%; width: 44%; }
+}
+@media (max-width: 768px) {
+    .hero { height: auto; min-height: 100svh; padding-top: 7.5rem; padding-bottom: 2rem; }
+    .hero-art {
+        top: auto; left: 0; height: clamp(310px, 92vw, 560px); width: 100%;
+        /* Center the two people within the photo, rather than the full reference canvas. */
+        background-size: 100% 100%, auto 112%;
+        background-position: left top, calc(50vw - clamp(133.3px, 39.56vw, 240.8px)) top;
+    }
+    .hero-content {
+        top: auto; left: auto; width: 100%; max-width: 540px; margin: -1rem auto 0;
+        padding: 0 1.5rem; transform: none;
+    }
+    .hero-logo { width: 94%; margin: 0 auto; }
+    .hero .event-info { margin-top: 1.5rem; padding: 0; }
+    .hero .event-info p { font-size: 1rem; }
+    .hero-video-button { width: 90%; min-height: 52px; font-size: 1.5rem; margin-top: 1.25rem; }
+}
+
+
+
+
+
+
+/* Event archive guidance, following the supplied content hierarchy. */
+.hero .event-info { padding: 0; text-align: center; margin-top: clamp(28px, 2.8vw, 48px); color: #b8c3ca; }
+.hero .event-info p { text-align: center; font-size: 1rem; line-height: 1.8; margin: 0; }
+.hero-video-section { border-top: 1px solid #344148; margin-top: 24px; padding-top: 24px; }
+.hero-video-lead { margin: 0 0 12px; color: #fff; font-size: 1rem; font-weight: 700; line-height: 1.6; }
+.hero-video-section .hero-video-button { width: 90%; min-height: 52px; margin: 0 auto; font-size: clamp(1.125rem, 1.4vw, 1.5rem); gap: .5em; }
+.hero-play-icon { width: 1.1em; height: 1.1em; flex-shrink: 0; }
+.hero-video-note { margin: 8px 0 0; font-size: .875rem; line-height: 1.6; color: #aab6be; }
+@media (max-width: 768px) {
+    .hero .event-info { margin-top: 28px; }
+    .hero-video-section { margin-top: 24px; padding-top: 24px; }
+    .hero-video-section .hero-video-button { width: 100%; }
+}
+
+.movie-archive { max-width: 1100px; margin: 0 auto 6rem; scroll-margin-top: 120px; }
+.movie-eyebrow { color: #80bdd8; text-align: center; font-size: .875rem; margin: 0 0 .5rem; letter-spacing: .08em; }
+.movie-archive h2 { display: block; font-size: clamp(1.25rem, 2.5vw, 2rem); text-align: center; letter-spacing: 0; margin: 0 0 1.5rem; }
+.movie-archive h2::after { display: none; }
+.movie-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+.movie-player, .movie-pending { aspect-ratio: 16 / 9; background: #1e2b34; border-radius: 8px; overflow: hidden; }
+.movie-player iframe { display: block; width: 100%; height: 100%; border: 0; }
+.movie-pending { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .75rem; color: #b9c6ce; font-size: 1rem; }
+.movie-pending-label { font-size: .875rem; color: #fff; }
+.movie-card h3 { font-size: 1.125rem; margin: .8rem 0 .35rem; }
+.movie-card p { font-size: 1rem; margin: 0; color: var(--text-main); }
+@media (max-width: 768px) {
+    .movie-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .movie-archive { margin-bottom: 4rem; scroll-margin-top: 90px; }
+}
+
+.movie-youtube-button {
+    display: inline-flex; align-items: center; justify-content: center;
+    margin-top: 1rem; padding: .65rem 1.5rem; min-height: 44px;
+    border: 1px solid #f23425; border-radius: 999px;
+    background: #f23425; color: #fff; font-size: 1rem; font-weight: 700;
+    text-decoration: none; line-height: 1.5; transition: background .2s;
+}
+.movie-youtube-button:hover { background: #d9271b; border-color: #d9271b; }
+.movie-youtube-button:focus-visible { outline: 3px solid var(--text-highlight); outline-offset: 4px; }
+
+/* Equal navigation columns keep the logo exactly on the viewport center. */
+@media (min-width: 769px) {
+    .top-nav ul {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr)) clamp(100px, 14vw, 180px) repeat(2, minmax(0, 1fr));
+        width: calc(100% - 320px); max-width: 1040px;
+        margin: 0 auto; padding: 0; gap: clamp(8px, 1.5vw, 24px);
+        align-items: center; text-align: center;
+    }
+    .top-nav li { min-width: 0; }
+    .top-nav ul li a {
+        display: inline-flex; align-items: center; justify-content: center;
+        font-size: clamp(.875rem, 1.1vw, 1.1rem); letter-spacing: 0;
+        white-space: nowrap;
+    }
+    .top-nav li:nth-child(3) a { display: flex; padding: 0; border-bottom: 0; }
+    .top-nav img { display: block; width: 100%; height: auto; max-height: 70px; object-fit: contain; }
+}
+
+@media (min-width: 769px) {
+    .top-nav li:nth-child(4):last-child { grid-column: 4 / 6; }
+}

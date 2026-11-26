@@ -7,6 +7,7 @@
     <!-- Google Fontsを追加してモダンなタイポグラフィへ -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Noto+Sans+JP:wght@300;400;700;900&family=Noto+Serif+JP:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/hero.css">
     <script src="./js/script.js" defer></script>
 </head>
 <body id="top">
@@ -68,27 +69,50 @@
     </button>
 
     <header class="hero">
+        <div class="hero-art" role="img" aria-label="スポットライトの下に立つ石黒浩教授とアンドロイド"></div>
         <div class="hero-content">
-            <div class="subtitle-top" data-i18n="hero.subtitleTop">石黒浩教授とともに考える</div>
-            <h1 class="glitch" data-i18n="hero.title">私たちの未来</h1>
-            <div class="subtitle-bottom" data-i18n="hero.tagline">
-                <span class="text-s">50年後の未来は、</span><span class="text-m">「どこか」</span><span class="text-s">ではなく、</span><span class="text-m">「ここ」</span><span class="text-s">から始まる</span>
-            </div>
+            <h1 class="hero-logo">
+                <img src="./images/logo2x.png" width="5760" height="3240" alt="石黒浩教授とともに考える 私たちの未来。50年後の未来は、「どこか」ではなく、「ここ」から始まる" fetchpriority="high">
+            </h1>
 
             <div class="event-info">
-                <p data-i18n="hero.date"><strong>日時</strong>：2026年7月20日（月祝）13:30～15:00<br>
-                <span class="event-time-sub">受付開始 12:00、　開場 12:30</span></p>
-                <p data-i18n="hero.venue"><strong>会場</strong>：高島市民会館<span class="event-venue-sub">（滋賀県高島市今津町中沼1-3-1）</span></p>
+                <p data-i18n="hero.date">2026年7月20日（月・祝）開催</p>
+                <p data-i18n="hero.venue">滋賀県・高島市民会館</p>
+            </div>
+            <div class="hero-video-section">
+                <p class="hero-video-lead" data-i18n="hero.videoLead">イベント当日の映像を公開中</p>
+                <a class="hero-video-button" href="#movie-archive">
+                    <svg class="hero-play-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/><path d="m10 8 6 4-6 4V8Z" fill="currentColor"/></svg>
+                    <span data-i18n="hero.video">動画を見る</span>
+                </a>
+                <p class="hero-video-note" data-i18n="hero.videoNote">本編・ドキュメンタリー版</p>
             </div>
         </div>
     </header>
 
-    <!-- スクロールを促すアイコン / トップへ戻るボタン -->
-    <div class="scroll-indicator" id="scroll-indicator">
-        <span id="scroll-text">Scroll</span>
-    </div>
-
     <main>
+        <section id="movie-archive" class="movie-archive" aria-labelledby="movie-archive-title">
+            <p class="movie-eyebrow">MOVIE ARCHIVE</p>
+            <h2 id="movie-archive-title" data-i18n="archive.heading">映像で振り返る、私たちの未来。</h2>
+            <div class="movie-grid">
+                <article class="movie-card">
+                    <div class="movie-player">
+                        <iframe src="https://www.youtube.com/embed/rolW-BH5Xsc?si=9_r4WDWolBTRo-As" title="イベント本編" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
+                    <h3 data-i18n="archive.editedTitle">イベント本編</h3>
+                    <p data-i18n="archive.editedDescription">当日のイベント本編映像</p>
+                    <a class="movie-youtube-button" href="https://www.youtube.com/watch?v=rolW-BH5Xsc" target="_blank" rel="noopener noreferrer" data-i18n="archive.youtube">YouTubeで見る</a>
+                </article>
+                <article class="movie-card">
+                    <div class="movie-player">
+                        <iframe src="https://www.youtube.com/embed/MFwDv-Jjx24?si=20ve9y1eCMHXj-1C" title="ドキュメンタリー版 Pen And Voice" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
+                    <h3 data-i18n="archive.fullTitle">ドキュメンタリー版</h3>
+                    <p data-i18n="archive.fullDescription">Pen And Voice</p>
+                    <a class="movie-youtube-button" href="https://www.youtube.com/watch?v=MFwDv-Jjx24" target="_blank" rel="noopener noreferrer" data-i18n="archive.youtube">YouTubeで見る</a>
+                </article>
+            </div>
+        </section>
         <section id="details" class="details-section">
             <div class="animate-on-scroll fade-up" id="about">
                 <h2 data-i18n="details.heading">イベント内容</h2>
@@ -266,3 +290,8 @@
 
 </body>
 </html>
+
+
+
+
+

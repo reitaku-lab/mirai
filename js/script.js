@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     
 
-    document.documentElement.classList.add("light-theme");
+    // Start with the dark presentation shown in the design reference.
 
     const translations = {
         ja: {
@@ -14,9 +14,19 @@ document.addEventListener('DOMContentLoaded', () => {
             'nav.menuLabel': 'メニューを開く',
             'hero.subtitleTop': '石黒浩教授とともに考える',
             'hero.title': '私たちの未来',
+            'hero.video': '動画を見る',
+            'hero.videoLead': 'イベント当日の映像を公開中',
+            'hero.videoNote': '本編・ドキュメンタリー版',
+            'archive.heading': '映像で振り返る、私たちの未来。',
+            'archive.pending': '公開準備中',
+            'archive.editedTitle': 'イベント本編',
+            'archive.editedDescription': '当日のイベント本編映像',
+            'archive.fullTitle': 'ドキュメンタリー版',
+            'archive.youtube': 'YouTubeで見る',
+            'archive.fullDescription': 'Pen And Voice',
             'hero.tagline': '50年後の未来は、<span class="text-m">「どこか」</span>ではなく、<span class="text-m">「ここ」</span>から始まる',
-            'hero.date': '<strong>日時</strong>：2026年7月20日（月祝）13:30～15:00<br><span class="event-time-sub">受付開始 12:00、　開場 12:30</span>',
-            'hero.venue': '<strong>会場</strong>：高島市民会館<span class="event-venue-sub">（滋賀県高島市今津町中沼1-3-1）</span>',
+            'hero.date': '2026年7月20日（月・祝）開催',
+            'hero.venue': '滋賀県・高島市民会館',
             'details.heading': 'イベント内容',
             'details.intro': '<strong><a href="https://www.city.takashima.lg.jp/soshiki/kanmin/mirai/1/3/13269.html" target="_blank" rel="noopener noreferrer">高島市と麗澤大学の包括連携協定締結</a></strong>を記念し、<br>高島市出身で世界的に活躍する<br>ロボット研究者・石黒浩教授が登壇し',
             'details.introHeading': '未来を語り合う対話型<br>イベントを開催します',
@@ -71,9 +81,19 @@ document.addEventListener('DOMContentLoaded', () => {
             'nav.menuLabel': 'Open menu',
             'hero.subtitleTop': 'Thinking with Professor Hiroshi Ishiguro',
             'hero.title': 'Our Future',
+            'hero.video': 'Watch the video',
+            'hero.videoLead': 'Watch footage from the event',
+            'hero.videoNote': 'Main event / documentary',
+            'archive.heading': 'Revisit Our Future through film.',
+            'archive.pending': 'Coming soon',
+            'archive.editedTitle': 'Main event',
+            'archive.editedDescription': 'Watch the main event.',
+            'archive.fullTitle': 'Documentary',
+            'archive.youtube': 'Watch on YouTube',
+            'archive.fullDescription': 'Pen And Voice',
             'hero.tagline': '<span class="text-s">The future 50 years from now begins not </span><span class="text-m">somewhere else</span><span class="text-s">, but </span><span class="text-m">right here</span><span class="text-s">.</span>',
-            'hero.date': '<strong>Date</strong>: Monday, July 20, 2026, 1:30 PM-3:00 PM<br><span class="event-time-sub">Reception opens at 12:00 PM; doors open at 12:30 PM</span>',
-            'hero.venue': '<strong>Venue</strong>: Takashima Civic Hall<span class="event-venue-sub">(1-3-1 Nakanuma, Imazu-cho, Takashima, Shiga)</span>',
+            'hero.date': 'Held on July 20, 2026 (Mon., national holiday)',
+            'hero.venue': 'Takashima Civic Hall, Shiga',
             'details.heading': 'Event',
             'details.intro': 'To commemorate the <strong><a href="https://www.city.takashima.lg.jp/soshiki/kanmin/mirai/1/3/13269.html" target="_blank" rel="noopener noreferrer">comprehensive partnership agreement between Takashima City and Reitaku University</a></strong>,<br>Professor Hiroshi Ishiguro, a globally active robotics researcher from Takashima,<br>will join us as a featured speaker.',
             'details.introHeading': 'A dialogue-based event<br>to imagine the future together',
@@ -121,7 +141,6 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const languageBtn = document.getElementById('language-toggle');
-    const scrollText = document.getElementById('scroll-text');
     const youtubeTabs = document.querySelectorAll('.youtube-tab');
     const youtubePlayer = document.getElementById('youtube-player');
     let currentLanguage = localStorage.getItem('siteLanguage') || 'ja';
@@ -158,10 +177,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 : '<span>JP</span><span class="language-toggle-divider">/</span><span class="language-toggle-current">EN</span>';
         }
 
-        if (scrollText) {
-            const isCta = document.getElementById('scroll-indicator')?.classList.contains('is-totop');
-            scrollText.innerText = isCta ? strings['scroll.cta'] : 'Scroll';
-        }
 
         youtubeTabs.forEach((tab) => {
             const labelKey = tab.dataset.i18n;
@@ -315,36 +330,28 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
         
-        // スクロールインジケーターを「TOPへ戻る」ボタンへ切り替え
-        const scrollIndicatorObj = document.getElementById('scroll-indicator');
-        const scrollTextObj = document.getElementById('scroll-text');
-        
-        if (scrollIndicatorObj && scrollTextObj) {
-            if (scrolled > window.innerHeight * 0.3) {
-                // 画面の30%以上スクロールした場合、申込みボタンに変化
-                scrollIndicatorObj.classList.add('is-totop');
-                scrollTextObj.innerText = translations[currentLanguage]['scroll.cta'];
-            } else {
-                // 上部に戻ってきたら元のScrollに戻す
-                scrollIndicatorObj.classList.remove('is-totop');
-                scrollTextObj.innerText = 'Scroll';
-            }
-        }
     });
 
-    // スクロールインジケーターのクリックイベント
-        const scrollerBtn = document.getElementById('scroll-indicator');
 
-        if (scrollerBtn) {
-            scrollerBtn.addEventListener('click', () => {
-
-                const target = document.getElementById('registration');
-
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        }
 });
+document.addEventListener('DOMContentLoaded', () => {
+    const syncHeaderControls = () => document.body.classList.toggle('has-scrolled', window.scrollY > 100);
+    window.addEventListener('scroll', syncHeaderControls, { passive: true });
+    syncHeaderControls();
+});
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    const navigation = document.getElementById('top-nav');
+    if (!navigation) return;
+    const syncNavigationAccessibility = () => {
+        const visible = window.matchMedia('(min-width: 769px)').matches
+            ? window.scrollY > 100
+            : navigation.classList.contains('active');
+        navigation.setAttribute('aria-hidden', String(!visible));
+    };
+    window.addEventListener('scroll', syncNavigationAccessibility, { passive: true });
+    window.addEventListener('resize', syncNavigationAccessibility);
+    syncNavigationAccessibility();
+});
+
